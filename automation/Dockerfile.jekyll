@@ -1,0 +1,16 @@
+FROM docker.io/library/fedora:32
+
+RUN dnf -y install \
+        ruby \
+        ruby-devel \
+        @development-tools \
+        redhat-rpm-config \
+        gcc-c++ \
+        zlib-devel \
+    && \
+    gem install \
+        jekyll \
+        bundler \
+    && \
+    yum clean all
+
