@@ -12,7 +12,7 @@ This is probably my first blog post.
 I thought to warm up by sharing how I met Jekyll and introduced it to my
 container friend, Mr. podman.
 
-It all started a few days ago while preparing my talk to
+It all started while preparing my talk to
 [PyCon IL](https://pycon.org.il/2019/). I realized that a blog could have
 been very helpfull in gathering the ideas for such a talk.
 Lesson learned, I am on it.
@@ -28,9 +28,28 @@ So what do I need to make my blog work?
   - Knowing about the [GitHub themes](https://pages.github.com/themes/).
   - Getting to know a [cool theme](https://github.com/mmistakes/minimal-mistakes).
 - Choose the theme.
-- Deploy and run locally to review work before publishing.
+- Deploy and [run locally](#my-containarized-jekyll) to review work before
+  publishing.
 - Write content.
 
 ## My containarized Jekyll
 Here comes podman for the rescue.
 
+Assuming you have prepared the needed Jekyll configuration and backbone
+(see https://github.com/EdDev/eddev.github.io for an example), you are ready
+to launch your masterpiece.
+
+To run the Jekyll locally:
+- build the [container](../../automation/Dockerfile.jekyll)
+```
+sudo podman build --rm -t jekyll-server -f ./automation/Dockerfile.jekyll .
+```
+- enter its console:
+```
+sudo podman run --rm -ti -v ${PWD}:/jekyll:Z --net=host jekyll-server bash
+```
+- run the server:
+```
+cd jekyll
+./automation/run-server.sh
+```
