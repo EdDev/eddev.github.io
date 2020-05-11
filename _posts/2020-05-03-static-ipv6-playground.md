@@ -7,8 +7,8 @@ tags:
   - ipv6
 ---
 
-This post is all about setting up an IPv6 enviorment for learning and testing 
-of varios setups and scenarios.
+This post is all about setting up an IPv6 environment for learning and testing
+of various setups and scenarios.
 
 We will use network namespaces for our setup and proceed to define static
 IP addresses.
@@ -20,7 +20,7 @@ namespaces to simulate different network stacks.
 A network namespace is an isolated network stack that includes interfaces,
 ip addresses and routes.
 
-Throught this post, we will use the `ip` command which is part of the
+Throughout this post, we will use the `ip` command which is part of the
 [iproute2](https://wiki.linuxfoundation.org/networking/iproute2) utilities.
 
 ### Namespace creation
@@ -95,7 +95,7 @@ $ sudo ip netns exec blue ip addr
 With the IPv6 link-local addresses in place, we can already check the
 connectivity between the two namespaces.
 
-Using the infromation gathered in the previous `ip addr` commands, learn
+Using the information gathered in the previous `ip addr` commands, learn
 the link-local IPv6 address of each peer and use it in the ping command.
 
 Note: As the addresses have link-local scope, a zone must be added to the
@@ -114,7 +114,7 @@ sudo ip netns exec red ping -6 fe80::<the-peer-last-64-bits-address>%veth00
 
 ## IPv6 with global scope connectivity
 The previous IPv6 link-local addresses may be used to check L3 connectivity
-betweem two directly connected peers (i.e. interfaces connected to the same
+between two directly connected peers (i.e. interfaces connected to the same
 physical LAN). Routers are required not to forward link-local addresses.
 
 Therefore, in order to enable IPv6 connectivity beyond the physical LAN,
@@ -142,4 +142,4 @@ this time):
 sudo ip netns exec red ping -6 fd00::22
 ```
 
-Next we will expore [dynamic IPv6](../dynamic-ipv6-playground).
+Next we will explore [dynamic IPv6](../dynamic-ipv6-playground).

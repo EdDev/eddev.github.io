@@ -8,7 +8,7 @@ tags:
 ---
 
 In this post we will take a tour into the dynamic IPv6 setup, examining the
-varios options and scenarios it presents.
+various options and scenarios it presents.
 
 This post is a direct continuation to the
 [Static IPv6 Playground](../static-ipv6-playground) post.
@@ -41,7 +41,7 @@ less common in the industry.
 Stateful DHCPv6 complements RA by allowing a specific IPv6 address to be set
 on an interface (i.e. stateful dhcp) and the distribution of DNS information.
 It is also designed like its DHCPv4 origin with extendable options in mind,
-making it more accomodated for quick custom extensions.
+making it more accommodated for quick custom extensions.
 See [RA and DHCPv6 combinations](#ra-and-dhcpv6-combinations) for more
 information.
 
@@ -84,7 +84,7 @@ dhcp-range=::,static
 
 > **Warning**: These operations may cause the existing DNS entries to get
 overwritten (i.e `resolv.conf`) by `dhclient`.
-Therefore, it is recomended to run this setup in a container or VM.
+Therefore, it is recommended to run this setup in a container or VM.
 
 dnsmasq requires the interface it runs on to have an IPv6 address in the same
 network subnet of the address offer.
@@ -155,7 +155,7 @@ $ sudo ip netns exec red ip addr show veth00
        valid_lft forever preferred_lft forever
 ```
 
-When DHCPv6 is also enabled, one can run a DHCPv6 client and the appropiate
+When DHCPv6 is also enabled, one can run a DHCPv6 client and the appropriate
 IPv6 address from the DHCPv6 range will be assigned.
 ```
 sudo ip netns exec red dhclient -6 veth00
