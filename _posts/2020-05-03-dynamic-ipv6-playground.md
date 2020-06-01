@@ -76,8 +76,8 @@ addresses per specific identifiers (e.g. the interface mac address).
 This is useful for controlling the exact IPv6 address a requesting interface.
 With dnsmasq this translates to the following lines:
 ```
-dhcp-host=12:34:56:78:90:ab,[fd00::22]
-dhcp-range=::,static
+dhcp-host=12:34:56:78:90:ab,[::22]
+dhcp-range=::10,::ffff,static
 ```
 
 ### Run Server
@@ -90,7 +90,7 @@ dnsmasq requires the interface it runs on to have an IPv6 address in the same
 network subnet of the address offer.
 Therefore, a global IPv6 address needs to be defined:
 ```
-sudo ip netns exec red ip addr add fd::1/64 dev veth00
+sudo ip netns exec blue ip addr add fd::1/64 dev veth00
 ```
 Lets examine the result:
 ```
